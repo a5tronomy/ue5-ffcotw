@@ -77,4 +77,11 @@ enum ESceneTextureId : int
 	PPI_WorldTangent UMETA(DisplayName = "WorldTangent"),
 	/** Material anisotropy, single channel (GBuffer) */
 	PPI_Anisotropy UMETA(DisplayName = "Anisotropy"),
+
+	/** FFCOTW Custom Engine */
+	/** Custom enum values for FFCOTW */
+	PPI_SnkCustom0 UMETA(Hidden),
+	PPI_SnkCustom1 UMETA(Hidden),
+	PPI_SnkCustom2 UMETA(Hidden),
+	PPI_SnkInlineParam UMETA(Hidden),
 };

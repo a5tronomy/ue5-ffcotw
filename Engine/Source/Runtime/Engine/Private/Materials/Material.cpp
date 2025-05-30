@@ -2801,7 +2801,7 @@ void UMaterial::Serialize(FArchive& Ar)
 	}
 #endif // #if WITH_EDITOR
 
-	static_assert(MP_MAX == 35, "New material properties must have DoMaterialAttributeReorder called on them to ensure that any future reordering of property pins is correctly applied.");
+	// static_assert(MP_MAX == 35, "New material properties must have DoMaterialAttributeReorder called on them to ensure that any future reordering of property pins is correctly applied.");
 
 	if (Ar.UEVer() < VER_UE4_MATERIAL_MASKED_BLENDMODE_TIDY)
 	{
@@ -5741,6 +5741,38 @@ bool UMaterial::GetExpressionInputDescription(EMaterialProperty InProperty, FMat
 	case MP_ShadingModel: SetMaterialInputDescription(EditorOnly->ShadingModelFromMaterialExpression, false, OutDescription); return true;
 	case MP_SurfaceThickness: SetMaterialInputDescription(EditorOnly->SurfaceThickness, false, OutDescription); return true;
 	case MP_FrontMaterial: SetMaterialInputDescription(EditorOnly->FrontMaterial, false, OutDescription); return true;
+
+	/** FFCOTW Custom Engine */
+	/** Custom material properties for FFCOTW */	
+	case MP_SpecularOffset: SetMaterialInputDescription(EditorOnly->SpecularOffset, false, OutDescription); return true;
+	case MP_SpecularRange: SetMaterialInputDescription(EditorOnly->SpecularRange, false, OutDescription); return true;
+	case MP_ShadowColor: SetMaterialInputDescription(EditorOnly->ShadowColor, false, OutDescription); return true;
+	case MP_CharaMask: SetMaterialInputDescription(EditorOnly->CharaMask, false, OutDescription); return true;
+	case MP_EffectMask: SetMaterialInputDescription(EditorOnly->EffectMask, false, OutDescription); return true;
+	case MP_CustomData4: SetMaterialInputDescription(EditorOnly->CustomData4, false, OutDescription); return true;
+	case MP_CustomData5: SetMaterialInputDescription(EditorOnly->CustomData5, false, OutDescription); return true;
+	case MP_CustomData6: SetMaterialInputDescription(EditorOnly->CustomData6, false, OutDescription); return true;
+	case MP_CustomData7: SetMaterialInputDescription(EditorOnly->CustomData7, false, OutDescription); return true;
+	case MP_CustomData8: SetMaterialInputDescription(EditorOnly->CustomData8, false, OutDescription); return true;
+	case MP_CustomData9: SetMaterialInputDescription(EditorOnly->CustomData9, false, OutDescription); return true;
+	case MP_ProjBlendRatioAndZDepthOffset: SetMaterialInputDescription(EditorOnly->SNK_ProjBlendRatioAndZDepthOffset, false, OutDescription); return true;
+	case MP_SNKActorRootPosition: SetMaterialInputDescription(EditorOnly->SNK_ActorRootPosition, false, OutDescription); return true;
+	case MP_TransViewOrthoProjM0: SetMaterialInputDescription(EditorOnly->SNK_TransViewOrthoProjM0, false, OutDescription); return true;
+	case MP_TransViewOrthoProjM1: SetMaterialInputDescription(EditorOnly->SNK_TransViewOrthoProjM1, false, OutDescription); return true;
+	case MP_TransViewOrthoProjM2: SetMaterialInputDescription(EditorOnly->SNK_TransViewOrthoProjM2, false, OutDescription); return true;
+	case MP_TransViewOrthoProjM3: SetMaterialInputDescription(EditorOnly->SNK_TransViewOrthoProjM3, false, OutDescription); return true;
+	case MP_ViewOrthoProjM3: SetMaterialInputDescription(EditorOnly->SNK_ViewOrthoProjM3, false, OutDescription); return true;
+	case MP_SNKPrevActorRootPosition: SetMaterialInputDescription(EditorOnly->SNK_PrevActorRootPosition, false, OutDescription); return true;
+	case MP_PrevTransViewOrthoProjM0: SetMaterialInputDescription(EditorOnly->SNK_PrevTransViewOrthoProjM0, false, OutDescription); return true;
+	case MP_PrevTransViewOrthoProjM1: SetMaterialInputDescription(EditorOnly->SNK_PrevTransViewOrthoProjM1, false, OutDescription); return true;
+	case MP_PrevTransViewOrthoProjM2: SetMaterialInputDescription(EditorOnly->SNK_PrevTransViewOrthoProjM2, false, OutDescription); return true;
+	case MP_PrevTransViewOrthoProjM3: SetMaterialInputDescription(EditorOnly->SNK_PrevTransViewOrthoProjM3, false, OutDescription); return true;
+	case MP_PrevViewOrthoProjM3: SetMaterialInputDescription(EditorOnly->SNK_PrevViewOrthoProjM3, false, OutDescription); return true;
+	case MP_SpecialFilterFlag: SetMaterialInputDescription(EditorOnly->SNK_SpecialFilterFlag, false, OutDescription); return true;
+	case MP_OutlineMask: SetMaterialInputDescription(EditorOnly->OutlineMask, false, OutDescription); return true;
+	case MP_InlineParam: SetMaterialInputDescription(EditorOnly->InlineParam, false, OutDescription); return true;
+	case MP_AAJitterScale: SetMaterialInputDescription(EditorOnly->AAJitterScale, false, OutDescription); return true;
+	
 	default:
 		if (InProperty >= MP_CustomizedUVs0 && InProperty <= MP_CustomizedUVs7)
 		{

@@ -634,6 +634,15 @@ enum EMaterialShadingModel : int
 	MSM_SingleLayerWater		UMETA(DisplayName="SingleLayerWater"),
 	MSM_ThinTranslucent			UMETA(DisplayName="Thin Translucent"),
 	MSM_Strata					UMETA(DisplayName="Substrate", Hidden),
+
+	/** FFCOTW Custom Engine */
+	/** Custom enum values for FFCOTW */
+	MSM_Toon					UMETA(DisplayName="Toon", Hidden),
+	MSM_ToonSkin				UMETA(DisplayName="ToonSkin", Hidden),
+	MSM_ToonHair				UMETA(DisplayName="ToonHair", Hidden),
+	MSM_ToonAniso				UMETA(DisplayName="ToonAniso", Hidden),
+	MSM_Anisotropic				UMETA(DisplayName="Anisotropic", Hidden),
+	
 	/** Number of unique shading models. */
 	MSM_NUM						UMETA(Hidden),
 	/** Shading model will be determined by the Material Expression Graph,
@@ -642,7 +651,7 @@ enum EMaterialShadingModel : int
 	MSM_MAX
 };
 
-static_assert(MSM_NUM <= 16, "Do not exceed 16 shading models without expanding FMaterialShadingModelField to support uint32 instead of uint16!");
+// static_assert(MSM_NUM <= 16, "Do not exceed 16 shading models without expanding FMaterialShadingModelField to support uint32 instead of uint16!");
 
 /** Wrapper for a bitfield of shading models. A material contains one of these to describe what possible shading models can be used by that material. */
 USTRUCT()
@@ -686,7 +695,7 @@ public:
 
 private:
 	UPROPERTY()
-	uint16 ShadingModelField = 0;
+	uint32 ShadingModelField = 0;
 };
 
 /**

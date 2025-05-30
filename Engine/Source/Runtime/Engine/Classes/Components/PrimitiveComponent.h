@@ -30,6 +30,7 @@
 #include "HLOD/HLODLevelExclusion.h"
 #include "Stats/Stats2.h"
 #include "PSOPrecache.h"
+#include "FFCOTW.h"
 #if UE_ENABLE_INCLUDE_ORDER_DEPRECATED_IN_5_1
 #include "Engine/OverlapInfo.h"
 #endif
@@ -641,6 +642,52 @@ public:
 	UPROPERTY(Transient, DuplicateTransient)
 	uint8 bIsBeingMovedByEditor:1;
 
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_PrimitiveComponent01[0x2] = {};
+	
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	uint8 bUsePriorityRendering: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_PrimitiveComponent02[0x3] = {};
+	
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	uint8 bCustomStencilNoDepth: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_PrimitiveComponent03[0x3] = {};
+	
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	uint8 bRenderInFront: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	uint8 bOverwriteStencilValue: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_PrimitiveComponent04[0x3] = {};
+	
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	uint8 RenderInFrontStencilValue;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = Rendering)
+	FSnkViewChannels SnkViewChannels;
+
 	/** If true, this component will be rendered in the CustomDepth pass (usually used for outlines) */
 	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Rendering, meta=(DisplayName = "Render CustomDepth Pass"))
 	uint8 bRenderCustomDepth:1;
@@ -1101,6 +1148,26 @@ public:
 	/** Set custom primitive data, four floats at once, from index DataIndex to index DataIndex + 3. This sets the run-time data only, so it doesn't serialize. */
 	UFUNCTION(BlueprintCallable, Category="Rendering|Material")
 	ENGINE_API void SetCustomPrimitiveDataVector4(int32 DataIndex, FVector4 Value);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category="Rendering")
+	ENGINE_API void SetUsePriorityRendering(bool bValue);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category="Rendering")
+	ENGINE_API void SetRenderInFrontStencilValue(uint8 Value);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category="Rendering")
+	ENGINE_API void SetRenderInFront(bool bValue);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category="Rendering")
+	ENGINE_API void SetCustomStencilNoDepth(bool bValue);
 
 	/** 
 	 * Get the custom primitive data for this primitive component.

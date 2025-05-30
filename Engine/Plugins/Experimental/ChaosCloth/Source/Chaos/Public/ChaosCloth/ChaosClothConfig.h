@@ -219,6 +219,11 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Collision Properties")
 	bool bUseCCD = false;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = "Collision Properties")
+	bool bUseCCD_ForLowSpec = false;
+
 	/** Enable self collision repulsion forces (point-face). */
 	UPROPERTY(EditAnywhere, Category = "Collision Properties")
 	bool bUseSelfCollisions = false;

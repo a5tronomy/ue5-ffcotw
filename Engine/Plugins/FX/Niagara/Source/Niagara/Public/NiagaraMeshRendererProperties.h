@@ -27,7 +27,34 @@ enum class ENiagaraMeshFacingMode : uint8
 	/** Has the mesh local-space X-axis point towards the camera's position.*/
 	CameraPosition,
 	/** Has the mesh local-space X-axis point towards the closest point on the camera view plane.*/
-	CameraPlane
+	CameraPlane,
+
+	/** FFCOTW Custom Engine */
+	/** Custom enum value for FFCOTW */
+	CameraFixed
+};
+
+/** FFCOTW Custom Engine */
+/** Custom enum values for FFCOTW */
+UENUM()
+enum class ENiagaraRenderType : uint8 
+{
+	None = 0,
+	Back = 4,
+	LineBitween = 8,
+	Front = 13,
+	Frontmost = 14,
+	ENiagaraRenderType_MAX = 15,
+};
+
+/** FFCOTW Custom Engine */
+/** Custom enum values for FFCOTW */
+UENUM()
+enum class ENiagaraLifeTimePriorityType : uint8  
+{
+	Niagara = 0,
+	Effekseer = 1,
+	ENiagaraLifeTimePriorityType_MAX = 2,
 };
 
 UENUM()

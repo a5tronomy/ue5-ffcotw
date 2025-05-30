@@ -13,6 +13,7 @@
 #include "NiagaraSystemInstanceController.h"
 #include "PrimitiveSceneProxy.h"
 #endif
+#include "NiagaraMeshRendererProperties.h"
 #include "NiagaraUserRedirectionParameterStore.h"
 #include "NiagaraVariant.h"
 #include "PrimitiveViewRelevance.h"
@@ -881,6 +882,34 @@ private:
 
 	UPROPERTY(transient)
 	TObjectPtr<class UNiagaraCullProxyComponent> CullProxy;
+
+	/** FFCOTW Custom Engine */
+	bool bBackLine;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Rendering)
+	ENiagaraRenderType RenderType;
+    
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Rendering)
+	bool bChangeRenderTypeOnBackLine;
+    
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Rendering)
+	ENiagaraRenderType RenderTypeOnBackLine;
+    
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Life)
+	ENiagaraLifeTimePriorityType LifeTimePriority;
+    
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Attachment)
+	bool UseCharacterAttach;
 
 	NIAGARA_API void CreateCullProxy(bool bForce = false);
 	NIAGARA_API void DestroyCullProxy();

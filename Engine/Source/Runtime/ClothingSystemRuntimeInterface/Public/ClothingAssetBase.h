@@ -121,6 +121,9 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = Import)
 	FString ImportedFilePath;
 
+	/** FFCOTW Custom Engine */
+	bool returnProperGuid;
+
 protected:
 
 	/** The asset factory should have access, as it will assign the asset guid when building assets */
@@ -129,4 +132,7 @@ protected:
 	/** Guid to identify this asset. Will be embedded into chunks that are created using this asset */
 	UPROPERTY()
 	FGuid AssetGuid;
+
+	/** FFCOTW Custom Engine */
+	FGuid ImproperGuid;
 };

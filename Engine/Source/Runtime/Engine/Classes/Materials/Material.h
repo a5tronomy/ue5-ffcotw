@@ -397,6 +397,146 @@ public:
 	UPROPERTY()
 	FStrataMaterialInput FrontMaterial;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput SpecularOffset;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput SpecularRange;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FVectorMaterialInput ShadowColor;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CharaMask;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput EffectMask;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData4;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData5;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData6;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData7;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData8;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput CustomData9;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_ProjBlendRatioAndZDepthOffset;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_ActorRootPosition;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_TransViewOrthoProjM0;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_TransViewOrthoProjM1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_TransViewOrthoProjM2;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_TransViewOrthoProjM3;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_ViewOrthoProjM3;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevActorRootPosition;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevTransViewOrthoProjM0;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevTransViewOrthoProjM1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevTransViewOrthoProjM2;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevTransViewOrthoProjM3;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput SNK_PrevViewOrthoProjM3;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput SNK_SpecialFilterFlag;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput OutlineMask;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FColorMaterialInput InlineParam;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY()
+	FScalarMaterialInput AAJitterScale;
+
 	UPROPERTY()
 	FMaterialExpressionCollection ExpressionCollection;
 
@@ -611,6 +751,11 @@ public:
 	/** Whether the transluency pass should write its alpha, and only the alpha, into the framebuffer */
 	UPROPERTY(EditAnywhere, Category = Translucency, AdvancedDisplay)
 	uint8 bWriteOnlyAlpha : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Translucency, AdvancedDisplay)
+	uint8 bIgnoreTranslucencyBoundary : 1;
 
 	/** Whether to generate spherical normals for particles that use this material. */
 	UPROPERTY(EditAnywhere, Category=Material, AdvancedDisplay)
@@ -950,6 +1095,11 @@ public:
 	UPROPERTY(EditAnywhere, Category = Translucency, meta = (DisplayName = "Output Depth and Velocity"))
 	uint8 bOutputTranslucentVelocity : 1;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Translucency)
+	uint8 bDisableOutputDepthTranslucency : 1;
+
 	/** If true the compilation environment will be changed to remove the global COMPILE_SHADERS_FOR_DEVELOPMENT flag. */
 	UPROPERTY(transient, duplicatetransient)
 	uint8 bAllowDevelopmentShaderCompile : 1;
@@ -1025,6 +1175,31 @@ public:
 
 	/** Not a UPROPERTY, used to propagate editor only strata material simplification options for preview. */
 	FStrataCompilationConfig StrataCompilationConfig;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = CotW)
+	uint32 NumOfShells;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = CotW)
+	float ShellSortSign;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = CotW)
+	uint8 bForceShadowCastingToBeDisabled: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = CotW)
+	uint8 bUseLegacyProjectionBlend: 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = CotW)
+	uint8 bOutputTonemapMask: 1;
 
 	/** 
 	 * Guid that uniquely identifies this material. 

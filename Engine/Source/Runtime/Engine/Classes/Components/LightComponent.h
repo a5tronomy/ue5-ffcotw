@@ -10,6 +10,7 @@
 #include "SceneTypes.h"
 #include "RenderResource.h"
 #include "Components/LightComponentBase.h"
+#include "FFCOTW.h"
 #include "LightComponent.generated.h"
 
 class FLightComponentMapBuildData;
@@ -152,6 +153,11 @@ class ULightComponent : public ULightComponentBase
 	 */
 	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Light)
 	FLightingChannels LightingChannels;
+	
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=Light)
+	FSnkViewChannels SnkViewChannels;
 
 	/** 
 	 * The light function material to be applied to this light.
@@ -318,6 +324,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Rendering|Components|Light")
 	ENGINE_API void SetLightingChannels(bool bChannel0, bool bChannel1, bool bChannel2);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category = "Rendering|Components|Light")
+	void SetSnkViewChannels(bool bChannel0, bool bChannel1, bool bChannel2, bool bChannel3, bool bChannel4);
 
 public:
 	/** The light's scene info. */

@@ -1037,6 +1037,8 @@ void UWorld::SendAllEndOfFrameUpdates()
 
 	// Wait for tasks that are generating data for the render proxies, but are not awaited in any TickFunctions 
 	// E.g., see cloth USkeletalMeshComponent::UpdateClothStateAndSimulate
+	
+	/*
 	for (UActorComponent* Component : ComponentsThatNeedPreEndOfFrameSync)
 	{
 		if (Component)
@@ -1047,6 +1049,25 @@ void UWorld::SendAllEndOfFrameUpdates()
 				Component->OnPreEndOfFrameSync();
 			}
 			FMarkComponentEndOfFrameUpdateState::ClearMarkedForPreEndOfFrameSync(Component);
+		}
+	}
+	ComponentsThatNeedPreEndOfFrameSync.Reset();
+	*/
+
+	/** FFCOTW Custom Engine */
+	for (TWeakObjectPtr WeakComponent : ComponentsThatNeedPreEndOfFrameSync)
+	{
+		UActorComponent* Component = WeakComponent.Get();
+
+		if (Component)
+		{
+			if (IsValid(Component))
+			{
+				check(Component->GetMarkedForPreEndOfFrameSync());
+				Component->OnPreEndOfFrameSync();
+				FMarkComponentEndOfFrameUpdateState::ClearMarkedForPreEndOfFrameSync(Component);
+			}
+
 		}
 	}
 	ComponentsThatNeedPreEndOfFrameSync.Reset();

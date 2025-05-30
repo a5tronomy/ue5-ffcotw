@@ -1203,6 +1203,23 @@ void ULightComponent::SetLightingChannels(bool bChannel0, bool bChannel1, bool b
 	}
 }
 
+void ULightComponent::SetSnkViewChannels(bool bChannel0, bool bChannel1, bool bChannel2, bool bChannel3, bool bChannel4)
+{
+	if (bChannel0 != SnkViewChannels.bChannel0 ||
+		bChannel1 != SnkViewChannels.bChannel1 ||
+		bChannel2 != SnkViewChannels.bChannel2 ||
+		bChannel2 != SnkViewChannels.bChannel3 ||
+		bChannel2 != SnkViewChannels.bChannel4)
+	{
+		SnkViewChannels.bChannel0 = bChannel0;
+		SnkViewChannels.bChannel1 = bChannel1;
+		SnkViewChannels.bChannel2 = bChannel2;
+		SnkViewChannels.bChannel3 = bChannel3;
+		SnkViewChannels.bChannel4 = bChannel4;
+		MarkRenderStateDirty();
+	}
+}
+
 // GetDirection
 FVector ULightComponent::GetDirection() const 
 { 

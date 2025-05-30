@@ -442,6 +442,65 @@ FText FMaterialAttributeDefinitionMap::GetAttributeOverrideForMaterial(const FGu
 	case MP_CustomOutput:
 		return FText::FromString(GetAttributeName(AttributeID));
 
+	/** FFCOTW Custom Engine */
+	/** Custom material properties for FFCOTW */
+	case MP_SpecularOffset:
+		return LOCTEXT("SpecularOffset", "Specular Offset");
+	case MP_SpecularRange:
+		return LOCTEXT("SpecularRange", "Specular Range");
+	case MP_ShadowColor:
+		return LOCTEXT("ShadowColor", "Shadow Color");
+	case MP_CharaMask:
+		return LOCTEXT("CharaMask", "Character Mask");
+	case MP_EffectMask:
+		return LOCTEXT("EffectMask", "Effect Mask");
+	case MP_CustomData4:
+		return LOCTEXT("CustomData4", "Custom Data 4");
+	case MP_CustomData5:
+		return LOCTEXT("CustomData5", "Custom Data 5");
+	case MP_CustomData6:
+		return LOCTEXT("CustomData6", "Custom Data 6");
+	case MP_CustomData7:
+		return LOCTEXT("CustomData7", "Custom Data 7");
+	case MP_CustomData8:
+		return LOCTEXT("CustomData8", "Custom Data 8");
+	case MP_CustomData9:
+		return LOCTEXT("CustomData9", "Custom Data 9");
+	case MP_ProjBlendRatioAndZDepthOffset:
+		return LOCTEXT("ProjBlendRatioAndZDepthOffset", "Proj Blend Ratio And Z-Depth Offset");
+	case MP_SNKActorRootPosition:
+		return LOCTEXT("SNKActorRootPosition", "SNK Actor Root Position");
+	case MP_TransViewOrthoProjM0:
+		return LOCTEXT("TransViewOrthoProjM0", "Trans View Ortho Proj M0");
+	case MP_TransViewOrthoProjM1:
+		return LOCTEXT("TransViewOrthoProjM1", "Trans View Ortho Proj M1");
+	case MP_TransViewOrthoProjM2:
+		return LOCTEXT("TransViewOrthoProjM2", "Trans View Ortho Proj M2");
+	case MP_TransViewOrthoProjM3:
+		return LOCTEXT("TransViewOrthoProjM3", "Trans View Ortho Proj M3");
+	case MP_ViewOrthoProjM3:
+		return LOCTEXT("ViewOrthoProjM3", "View Ortho Proj M3");
+	case MP_SNKPrevActorRootPosition:
+		return LOCTEXT("SNKPrevActorRootPosition", "SNK Prev Actor Root Position");
+	case MP_PrevTransViewOrthoProjM0:
+		return LOCTEXT("PrevTransViewOrthoProjM0", "Prev Trans View Ortho Proj M0");
+	case MP_PrevTransViewOrthoProjM1:
+		return LOCTEXT("PrevTransViewOrthoProjM1", "Prev Trans View Ortho Proj M1");
+	case MP_PrevTransViewOrthoProjM2:
+		return LOCTEXT("PrevTransViewOrthoProjM2", "Prev Trans View Ortho Proj M2");
+	case MP_PrevTransViewOrthoProjM3:
+		return LOCTEXT("PrevTransViewOrthoProjM3", "Prev Trans View Ortho Proj M3");
+	case MP_PrevViewOrthoProjM3:
+		return LOCTEXT("PrevViewOrthoProjM3", "Prev View Ortho Proj M3");
+	case MP_SpecialFilterFlag:
+		return LOCTEXT("SpecialFilterFlag", "Special Filter Flag");
+	case MP_OutlineMask:
+		return LOCTEXT("OutlineMask", "Outline Mask");
+	case MP_InlineParam:
+		return LOCTEXT("InlineParam", "Inline Mask");
+	case MP_AAJitterScale:
+		return LOCTEXT("AAJitterScale", "AA Jitter Scale");
+
 	}
 	return  LOCTEXT("Missing", "Missing");
 }

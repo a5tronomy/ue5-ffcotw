@@ -1516,9 +1516,11 @@ public:
 
 private:
 
+	/** FFCOTW Custom Engine */
+	/** Property modification */
 	/** Array of components that need to wait on tasks before end of frame updates */
 	UPROPERTY(Transient, NonTransactional)
-	TSet<TObjectPtr<UActorComponent>> ComponentsThatNeedPreEndOfFrameSync;
+	TSet<TWeakObjectPtr<UActorComponent>> ComponentsThatNeedPreEndOfFrameSync;
 
 	/** Array of components that need updates at the end of the frame */
 	UPROPERTY(Transient, NonTransactional)

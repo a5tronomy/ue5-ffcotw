@@ -43,6 +43,11 @@ enum class ENiagaraSpriteFacingMode : uint8
 	/** Blends between FaceCamera and FaceCameraPosition.*/
 	FaceCameraDistanceBlend,
 
+	/** FFCOTW Custom Engine */
+	/** Custom enum values for FFCOTW */
+	FaceCameraFixed,
+	FaceCameraAxisY,
+
 	/** Automatically select between FaceCamera & CustomFacingVector depending on if SpriteFacing binding is valid. */
 	Automatic
 };

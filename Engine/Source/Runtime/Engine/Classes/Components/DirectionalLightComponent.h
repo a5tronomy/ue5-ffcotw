@@ -117,6 +117,11 @@ class UDirectionalLightComponent : public ULightComponent
 	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=CascadedShadowMaps, meta=(UIMin = "0", UIMax = "800000"), DisplayName = "Far Shadow Distance")
 	float FarShadowDistance;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, AdvancedDisplay, BlueprintReadOnly, Category=CascadedShadowMaps)
+	bool bSNKForceInsetShadowsOnly;
+
 	/** 
 	 * Distance at which the ray traced shadow cascade should end.  Distance field shadows will cover the range between 'Dynamic Shadow Distance' this distance. 
 	 */
@@ -314,6 +319,11 @@ class UDirectionalLightComponent : public ULightComponent
 
 	UFUNCTION(BlueprintCallable, Category = "Rendering|Lighting")
 	ENGINE_API void SetForwardShadingPriority(int32 NewValue);
+
+	/** FFCOTW Custom Engine */
+	/** Custom function for FFCOTW */
+	UFUNCTION(BlueprintCallable, Category = "Rendering|Lighting")
+	void SetSNKForceInsetShadowsOnly(bool bNewValue);
 
 	//~ Begin ULightComponent Interface
 	ENGINE_API virtual FVector4 GetLightPosition() const override;

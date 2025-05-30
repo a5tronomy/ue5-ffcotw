@@ -45,6 +45,11 @@ struct FMaterialInstanceBasePropertyOverrides
 	UPROPERTY(EditAnywhere, Category = Material)
 	uint8 bOverride_OutputTranslucentVelocity : 1;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_DisableOutputDepthTranslucency : 1;
+
 	/** Enables override of the displacement magnitude and center property. */
 	UPROPERTY(EditAnywhere, Category = Material)
 	uint8 bOverride_DisplacementScaling : 1;
@@ -53,12 +58,37 @@ struct FMaterialInstanceBasePropertyOverrides
 	UPROPERTY(EditAnywhere, Category = Material)
 	uint8 bOverride_MaxWorldPositionOffsetDisplacement : 1;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_NumOfShells : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_ShellSortSign : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_ForceShadowCastingToBeDisabled : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_UseLegacyProjectionBlend : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material)
+	uint8 bOverride_OutputTonemapMask : 1;
+	
 	/** Indicates that the material should be rendered without backface culling and the normal should be flipped for backfaces. */
 	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_TwoSided"))
 	uint8 TwoSided : 1;
 
 	/** Indicates that the material should be rendered as. */
-	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_bThinSurface"))
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_bIsThinSurface"))
 	uint8 bIsThinSurface : 1;
 
 	/** Whether the material should support a dithered LOD transition when used with the foliage system. */
@@ -66,12 +96,17 @@ struct FMaterialInstanceBasePropertyOverrides
 	uint8 DitheredLODTransition : 1;
 
 	/** Whether the material should cast shadows as masked even though it has a translucent blend mode. */
-	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_CastShadowAsMasked", NoSpinbox = true))
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_CastDynamicShadowAsMasked", NoSpinbox = true))
 	uint8 bCastDynamicShadowAsMasked:1;
 
 	/** Whether the material should output velocity even though it has a translucent blend mode. */
 	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_OutputTranslucentVelocity"))
 	uint8 bOutputTranslucentVelocity : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_DisableOutputDepthTranslucency"))
+	uint8 bDisableOutputDepthTranslucency : 1;
 
 	/** The blend mode */
 	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_BlendMode"))
@@ -91,6 +126,31 @@ struct FMaterialInstanceBasePropertyOverrides
 	/** The maximum World Position Offset distance. Zero means no maximum. */
 	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_MaxWorldPositionOffsetDisplacement", ClampMin=0.0f, NoSpinbox = true))
 	float MaxWorldPositionOffsetDisplacement;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_NumOfShells"))
+	uint32 NumOfShells;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_ShellSortSign"))
+	float ShellSortSign;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_ForceShadowCastingToBeDisabled"))
+	uint8 bForceShadowCastingToBeDisabled : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_UseLegacyProjectionBlend"))
+	uint8 bUseLegacyProjectionBlend : 1;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, Category = Material, meta = (editcondition = "bOverride_OutputTonemapMask"))
+	uint8 bOutputTonemapMask : 1;
 
 	ENGINE_API FMaterialInstanceBasePropertyOverrides();
 

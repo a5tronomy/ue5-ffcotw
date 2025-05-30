@@ -688,6 +688,7 @@ enum ETranslucencyVolumeCascade
 // View uniform buffer member declarations
 #define VIEW_UNIFORM_BUFFER_MEMBER_TABLE \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, TranslatedWorldToClip) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, TranslatedWorldToClipNoAA) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, RelativeWorldToClip) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, ClipToRelativeWorld)  \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, TranslatedWorldToView) \
@@ -702,8 +703,14 @@ enum ETranslucencyVolumeCascade
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, ScreenToRelativeWorld) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, ScreenToTranslatedWorld) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, MobileMultiviewShadowTransform) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, SNK_TransViewOrthoProjMatrix) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, SNK_ViewOrthoProjMatrix) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, SNK_WorldToClip) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, SNK_InvViewMatrix) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, SNK_PrevInvViewMatrix) \
 	VIEW_UNIFORM_BUFFER_MEMBER(FVector3f, ViewTilePosition) \
 	VIEW_UNIFORM_BUFFER_MEMBER(FVector3f, MatrixTilePosition) \
+	VIEW_UNIFORM_BUFFER_MEMBER_EX(FVector3f, PrevViewForward, EShaderPrecisionModifier::Half) \
 	VIEW_UNIFORM_BUFFER_MEMBER_EX(FVector3f, ViewForward, EShaderPrecisionModifier::Half) \
 	VIEW_UNIFORM_BUFFER_MEMBER_EX(FVector3f, ViewUp, EShaderPrecisionModifier::Half) \
 	VIEW_UNIFORM_BUFFER_MEMBER_EX(FVector3f, ViewRight, EShaderPrecisionModifier::Half) \
@@ -718,6 +725,7 @@ enum ETranslucencyVolumeCascade
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevViewToClip) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevClipToView) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevTranslatedWorldToClip) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevTranslatedWorldToClipNoAA) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevTranslatedWorldToView) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevViewToTranslatedWorld) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevTranslatedWorldToCameraView) \
@@ -726,6 +734,7 @@ enum ETranslucencyVolumeCascade
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FVector3f, PrevRelativeWorldCameraOrigin) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FVector3f, PrevRelativeWorldViewOrigin) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FVector3f, RelativePrevPreViewTranslation) \
+	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevRelativeWorldToClip) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevClipToRelativeWorld) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, PrevScreenToTranslatedWorld) \
 	VIEW_UNIFORM_BUFFER_MEMBER_PER_VIEW(FMatrix44f, ClipToPrevClip) \
@@ -928,6 +937,9 @@ BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT_WITH_CONSTRUCTOR(FViewUniformShaderParamete
 	VIEW_UNIFORM_BUFFER_MEMBER_TABLE
 
 	// Same as Wrap_WorldGroupSettings and Clamp_WorldGroupSettings, but with mipbias=MaterialTextureMipBias.
+
+	SHADER_PARAMETER(uint32, SnkViewStackingParams)
+
 	SHADER_PARAMETER_SAMPLER(SamplerState, MaterialTextureBilinearWrapedSampler)
 	SHADER_PARAMETER_SAMPLER(SamplerState, MaterialTextureBilinearClampedSampler)
 

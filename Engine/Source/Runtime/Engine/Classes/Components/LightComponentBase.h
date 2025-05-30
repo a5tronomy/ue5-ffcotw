@@ -104,6 +104,16 @@ class ULightComponentBase : public USceneComponent
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Light, AdvancedDisplay, meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMax = "1.0"))
 	float DeepShadowLayerDistribution;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Light, AdvancedDisplay)
+	bool IsSkinAndHairOnlyLight;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Light, AdvancedDisplay)
+	bool IsSkinAndHairOtherThanLight;
+
 	/** 
 	 * Scales the indirect lighting contribution from this light. 
 	 * A value of 0 disables any GI from this light. Default is 1.

@@ -787,6 +787,10 @@ protected:
 	/** Cache of encryption keys used by each primary asset */
 	TMap<FPrimaryAssetId, FGuid> PrimaryAssetEncryptionKeyCache;
 
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_AssetManager[0x28] = {};
+	
 	/** List of UObjects that are being kept from being GCd, derived from the asset type map. Arrays are currently more efficient than Sets */
 	UPROPERTY()
 	TArray<TObjectPtr<UObject>> ObjectReferenceList;
@@ -887,6 +891,10 @@ private:
 
 	mutable class IAssetRegistry* CachedAssetRegistry;
 	mutable const class UAssetManagerSettings* CachedSettings;
+
+	/** FFCOTW Custom Engine */
+	TArray<FString,TSizedDefaultAllocator<32>> OverrideCookPrimaryAssets;
+	bool bPakFileRulesLoaded;
 
 	friend struct FCompiledAssetManagerSearchRules;
 };

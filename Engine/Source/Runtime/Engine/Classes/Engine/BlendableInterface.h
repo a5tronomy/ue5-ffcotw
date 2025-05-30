@@ -19,6 +19,12 @@ enum EBlendableLocation : int
 	BL_BeforeTonemapping UMETA(DisplayName="Before Tonemapping"),
 	/** Input0:former pass color, Input1:SeparateTranslucency. */
 	BL_BeforeTranslucency UMETA(DisplayName="Before Translucency"),
+
+	/** FFCOTW Custom Engine */
+	/** Custom enum values for FFCOTW */
+	BL_BeforeDistortion UMETA(DisplayName="Before Distortion"),
+	BL_Frontline UMETA(DisplayName="Frontline"),
+	
 	/**
 	* Input0:former pass color, Input1:SeparateTranslucency, Input2: BloomOutput
 	*/

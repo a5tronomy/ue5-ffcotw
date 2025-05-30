@@ -213,8 +213,18 @@ public:
 	/** Run this tick first within the tick group, presumably to start async tasks that must be completed with this tick group, hiding the latency. */
 	uint8 bHighPriority:1;
 
-	/** If false, this tick will run on the game thread, otherwise it will run on any thread in parallel with the game thread and in parallel with other "async ticks" **/
+	/** FFCOTW Custom Engine */
+	/** Custom Structure */
+	/**
+	 * If false, this tick will run on the game thread, otherwise it will run on any thread in parallel with the game thread and in parallel with other "async ticks"
+	**/
+	UPROPERTY(EditDefaultsOnly, Category="Tick", AdvancedDisplay)
 	uint8 bRunOnAnyThread:1;
+	
+	/** FFCOTW Custom Engine */
+	uint64 SnkRealExecutionOrder;
+	uint64 SnkLatestFrame;
+	uint8 SnkRegisterIndex;
 
 private:
 
@@ -236,7 +246,11 @@ public:
 	/** The frequency in seconds at which this tick function will be executed.  If less than or equal to 0 then it will tick every frame */
 	UPROPERTY(EditDefaultsOnly, Category="Tick", meta=(DisplayName="Tick Interval (secs)"))
 	float TickInterval;
-
+	
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_FTickFunction[0x4] = {};
+	
 private:
 
 	/** Prerequisites for this tick function **/
@@ -515,6 +529,25 @@ struct TStructOpsTypeTraits<FActorComponentTickFunction> : public TStructOpsType
 	};
 };
 
+/** FFCOTW Custom Engine */
+/** Custom Structure */
+USTRUCT()
+struct FSkinnedMeshEverTickFunction : public FTickFunction
+{
+	GENERATED_USTRUCT_BODY()
+
+	uint8 UnknownData_FSkinnedMeshEverTickFunction[0x8] = {};
+	
+};
+
+template<>
+struct TStructOpsTypeTraits<FSkinnedMeshEverTickFunction> : public TStructOpsTypeTraitsBase2<FActorTickFunction>
+{
+	enum
+	{
+		WithCopy = false
+	};
+};
 
 UENUM()
 namespace ENetworkLagState

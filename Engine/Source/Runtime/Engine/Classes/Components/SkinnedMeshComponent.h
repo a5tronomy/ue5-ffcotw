@@ -261,6 +261,7 @@ protected:
 	TObjectPtr<UMeshDeformerInstance> MeshDeformerInstance;
 
 public:
+	
 	UFUNCTION(BlueprintGetter)
 	UMeshDeformerInstance* GetMeshDeformerInstance() const { return MeshDeformerInstance; }
 
@@ -427,6 +428,11 @@ public:
 	/** Check whether a given LOD index is valid for the external morph sets. */
 	ENGINE_API bool IsValidExternalMorphSetLODIndex(int32 LOD) const;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditDefaultsOnly, Category = Tick)
+	FSkinnedMeshEverTickFunction EverTick;
+	
 	/** Get the external morph sets for a given LOD. */
 	const FExternalMorphSets& GetExternalMorphSets(int32 LOD) const { return ExternalMorphSets[LOD]; }
 
@@ -1317,6 +1323,10 @@ public:
 	 */
 	FOnTickPose OnTickPose;
 
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_SkinnedMeshComponent[0x8] = {};
+	
 	/** 
 	 * Update Follower Component. This gets called when LeaderPoseComponent!=NULL
 	 * 
@@ -1393,6 +1403,7 @@ public:
 	}
 
 public:
+	
 	/** Get current number of component space transorms */
 	int32 GetNumComponentSpaceTransforms() const 
 	{ 
@@ -1461,6 +1472,7 @@ protected:
 	/** Bounds cached, so they're computed just once, either in local or worldspace depending on cvar 'a.CacheLocalSpaceBounds'. */
 	UPROPERTY(Transient)
 	mutable FBoxSphereBounds CachedWorldOrLocalSpaceBounds;
+	
 	UPROPERTY(Transient)
 	mutable FMatrix CachedWorldToLocalTransform;
 

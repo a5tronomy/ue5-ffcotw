@@ -38,6 +38,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SceneCapture)
 	TObjectPtr<class UTextureRenderTarget2D> TextureTarget;
 
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SceneCapture )
+	bool bOverwriteBackgroundColor;
+
+	/** FFCOTW Custom Engine */
+	/** Custom property for FFCOTW, changing this will not affect anything */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SceneCapture)
+	FLinearColor OverwriteBackgroundColor;
+	
 	/** When enabled, the scene capture will composite into the render target instead of overwriting its contents. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SceneCapture)
 	TEnumAsByte<enum ESceneCaptureCompositeMode> CompositeMode;

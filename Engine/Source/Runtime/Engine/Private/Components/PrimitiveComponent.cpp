@@ -2209,6 +2209,26 @@ void UPrimitiveComponent::SetCustomPrimitiveDataVector4(int32 DataIndex, FVector
 	SetCustomPrimitiveDataInternal(DataIndex, {ValueFlt.X, ValueFlt.Y, ValueFlt.Z, ValueFlt.W});
 }
 
+void UPrimitiveComponent::SetUsePriorityRendering(bool bValue)
+{
+	bUsePriorityRendering = bValue;
+}
+
+void UPrimitiveComponent::SetRenderInFrontStencilValue(uint8 Value)
+{
+	RenderInFrontStencilValue = Value;
+}
+
+void UPrimitiveComponent::SetRenderInFront(bool bValue)
+{
+	bRenderInFront = bValue;
+}
+
+void UPrimitiveComponent::SetCustomStencilNoDepth(bool bValue)
+{
+	bCustomStencilNoDepth = bValue;
+}
+
 void UPrimitiveComponent::SetScalarParameterForDefaultCustomPrimitiveData(FName ParameterName, float Value)
 {
 	int32 PrimitiveDataIndex = GetCustomPrimitiveDataIndexForScalarParameter(ParameterName);

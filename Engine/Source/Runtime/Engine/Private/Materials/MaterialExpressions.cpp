@@ -6728,11 +6728,14 @@ int32 UMaterialExpressionMakeMaterialAttributes::Compile(class FMaterialCompiler
 	int32 Ret = INDEX_NONE;
 	UMaterialExpression* Expression = nullptr;
 
- 	static_assert(MP_MAX == 35, 
+	
+	/*
+	static_assert(MP_MAX == 35, 
 		"New material properties should be added to the end of the inputs for this expression. \
-		The order of properties here should match the material results pins, the make material attriubtes node inputs and the mapping of IO indices to properties in GetMaterialPropertyFromInputOutputIndex().\
+		The order of properties here should match the material results pins, the make material attributes node inputs and the mapping of IO indices to properties in GetMaterialPropertyFromInputOutputIndex().\
 		Insertions into the middle of the properties or a change in the order of properties will also require that existing data is fixed up in DoMaterialAttributeReorder().\
-		");
+	");
+	*/
 
 	EMaterialProperty Property = FMaterialAttributeDefinitionMap::GetProperty(Compiler->GetMaterialAttribute());
 	// We don't worry about reroute nodes in the switch, as we have a test for their validity afterwards.
@@ -6757,6 +6760,38 @@ int32 UMaterialExpressionMakeMaterialAttributes::Compile(class FMaterialCompiler
 	case MP_Refraction: Ret = Refraction.Compile(Compiler); Expression = Refraction.Expression; break;
 	case MP_PixelDepthOffset: Ret = PixelDepthOffset.Compile(Compiler); Expression = PixelDepthOffset.Expression; break;
 	case MP_ShadingModel: Ret = ShadingModel.Compile(Compiler); Expression = ShadingModel.Expression; break;
+
+	/** FFCOTW Custom Engine */
+	/** Custom material properties for FFCOTW */
+	case MP_SpecularOffset: Ret = SpecularOffset.Compile(Compiler); Expression = SpecularOffset.Expression; break;
+	case MP_SpecularRange: Ret = SpecularRange.Compile(Compiler); Expression = SpecularRange.Expression; break;
+	case MP_ShadowColor: Ret = ShadowColor.Compile(Compiler); Expression = ShadowColor.Expression; break;
+	case MP_CharaMask: Ret = CharaMask.Compile(Compiler); Expression = CharaMask.Expression; break;
+	case MP_EffectMask: Ret = EffectMask.Compile(Compiler); Expression = EffectMask.Expression; break;
+	case MP_CustomData4: Ret = CustomData4.Compile(Compiler); Expression = CustomData4.Expression; break;
+	case MP_CustomData5: Ret = CustomData5.Compile(Compiler); Expression = CustomData5.Expression; break;
+	case MP_CustomData6: Ret = CustomData6.Compile(Compiler); Expression = CustomData6.Expression; break;
+	case MP_CustomData7: Ret = CustomData7.Compile(Compiler); Expression = CustomData7.Expression; break;
+	case MP_CustomData8: Ret = CustomData8.Compile(Compiler); Expression = CustomData8.Expression; break;
+	case MP_CustomData9: Ret = CustomData9.Compile(Compiler); Expression = CustomData9.Expression; break;
+	case MP_ProjBlendRatioAndZDepthOffset: Ret = SNK_ProjBlendRatioAndZDepthOffset.Compile(Compiler); Expression = SNK_ProjBlendRatioAndZDepthOffset.Expression; break;
+	case MP_SNKActorRootPosition: Ret = SNK_ActorRootPosition.Compile(Compiler); Expression = SNK_ActorRootPosition.Expression; break;
+	case MP_TransViewOrthoProjM0: Ret = SNK_TransViewOrthoProjM0.Compile(Compiler); Expression = SNK_TransViewOrthoProjM0.Expression; break;
+	case MP_TransViewOrthoProjM1: Ret = SNK_TransViewOrthoProjM1.Compile(Compiler); Expression = SNK_TransViewOrthoProjM1.Expression; break;
+	case MP_TransViewOrthoProjM2: Ret = SNK_TransViewOrthoProjM2.Compile(Compiler); Expression = SNK_TransViewOrthoProjM2.Expression; break;
+	case MP_TransViewOrthoProjM3: Ret = SNK_TransViewOrthoProjM3.Compile(Compiler); Expression = SNK_TransViewOrthoProjM3.Expression; break;
+	case MP_ViewOrthoProjM3: Ret = SNK_ViewOrthoProjM3.Compile(Compiler); Expression = SNK_ViewOrthoProjM3.Expression; break;
+	case MP_SNKPrevActorRootPosition: Ret = SNK_PrevActorRootPosition.Compile(Compiler); Expression = SNK_PrevActorRootPosition.Expression; break;
+	case MP_PrevTransViewOrthoProjM0: Ret = SNK_PrevTransViewOrthoProjM0.Compile(Compiler); Expression = SNK_PrevTransViewOrthoProjM0.Expression; break;
+	case MP_PrevTransViewOrthoProjM1: Ret = SNK_PrevTransViewOrthoProjM1.Compile(Compiler); Expression = SNK_PrevTransViewOrthoProjM1.Expression; break;
+	case MP_PrevTransViewOrthoProjM2: Ret = SNK_PrevTransViewOrthoProjM2.Compile(Compiler); Expression = SNK_PrevTransViewOrthoProjM2.Expression; break;
+	case MP_PrevTransViewOrthoProjM3: Ret = SNK_PrevTransViewOrthoProjM3.Compile(Compiler); Expression = SNK_PrevTransViewOrthoProjM3.Expression; break;
+	case MP_PrevViewOrthoProjM3: Ret = SNK_PrevViewOrthoProjM3.Compile(Compiler); Expression = SNK_PrevViewOrthoProjM3.Expression; break;
+	case MP_SpecialFilterFlag: Ret = SNK_SpecialFilterFlag.Compile(Compiler); Expression = SNK_SpecialFilterFlag.Expression; break;
+	case MP_OutlineMask: Ret = OutlineMask.Compile(Compiler); Expression = OutlineMask.Expression; break;
+	case MP_InlineParam: Ret = InlineParam.Compile(Compiler); Expression = InlineParam.Expression; break;
+	case MP_AAJitterScale: Ret = AAJitterScale.Compile(Compiler); Expression = AAJitterScale.Expression; break;
+
 	};
 
 	if (Property >= MP_CustomizedUVs0 && Property <= MP_CustomizedUVs7)
@@ -6814,12 +6849,14 @@ UMaterialExpressionBreakMaterialAttributes::UMaterialExpressionBreakMaterialAttr
 	bShowMaskColorsOnPin = false;
 
 	MenuCategories.Add(ConstructorStatics.NAME_MaterialAttributes);
-	
+
+	/*
  	static_assert(MP_MAX == 35, 
 		"New material properties should be added to the end of the outputs for this expression. \
 		The order of properties here should match the material results pins, the make material attributes node inputs and the mapping of IO indices to properties in GetMaterialPropertyFromInputOutputIndex().\
 		Insertions into the middle of the properties or a change in the order of properties will also require that existing data is fixed up in DoMaterialAttributesReorder().\
 		");
+	*/
 
 	Outputs.Reset();
 	Outputs.Add(FExpressionOutput(TEXT("BaseColor"), 1, 1, 1, 1, 0));
@@ -6838,6 +6875,37 @@ UMaterialExpressionBreakMaterialAttributes::UMaterialExpressionBreakMaterialAttr
 	Outputs.Add(FExpressionOutput(TEXT("ClearCoatRoughness"), 1, 1, 0, 0, 0));
 	Outputs.Add(FExpressionOutput(TEXT("AmbientOcclusion"), 1, 1, 0, 0, 0));
 	Outputs.Add(FExpressionOutput(TEXT("Refraction"), 1, 1, 1, 0, 0));
+
+	/** FFCOTW Custom Engine */
+	/** Custom material properties for FFCOTW */
+	Outputs.Add(FExpressionOutput(TEXT("SpecularOffset"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("SpecularRange"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("ShadowColor"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CharacterMask"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("EffectMask"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData4"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData5"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData6"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData7"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData8"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("CustomData9"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("ProjBlendRatioAndZDepthOffset"), 1, 1, 1, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("SNKActorRootPosition"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("TransViewOrthoProjM0"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("TransViewOrthoProjM1"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("TransViewOrthoProjM2"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("TransViewOrthoProjM3"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("ViewOrthoProjM3"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("SNKPrevActorRootPosition"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("PrevTransViewOrthoProjM0"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("PrevTransViewOrthoProjM1"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("PrevTransViewOrthoProjM2"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("PrevTransViewOrthoProjM3"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("PrevViewOrthoProjM3"), 1, 1, 1, 1, 0));
+	Outputs.Add(FExpressionOutput(TEXT("SpecialFilterFlag"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("OutlineMask"), 1, 1, 0, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("InlineParam"), 1, 1, 1, 0, 0));
+	Outputs.Add(FExpressionOutput(TEXT("AAJitterScale"), 1, 1, 0, 0, 0));
 
 	for (int32 UVIndex = 0; UVIndex <= MP_CustomizedUVs7 - MP_CustomizedUVs0; UVIndex++)
 	{

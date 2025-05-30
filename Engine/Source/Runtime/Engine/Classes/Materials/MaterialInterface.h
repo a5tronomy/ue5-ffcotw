@@ -311,6 +311,10 @@ protected:
 	UPROPERTY(EditAnywhere, AdvancedDisplay, Instanced, Category = Material)
 	TArray<TObjectPtr<UAssetUserData>> AssetUserData;
 
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_MaterialInterface[0x40] = {};
+
 private:
 	/** Feature levels to force to compile. */
 	uint32 FeatureLevelsToForceCompile;

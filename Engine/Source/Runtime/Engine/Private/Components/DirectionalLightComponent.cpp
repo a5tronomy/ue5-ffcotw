@@ -1379,6 +1379,11 @@ void UDirectionalLightComponent::SetForwardShadingPriority(int32 NewValue)
 	}
 }
 
+void UDirectionalLightComponent::SetSNKForceInsetShadowsOnly(bool bNewValue)
+{
+	bSNKForceInsetShadowsOnly = bNewValue;
+}
+
 void UDirectionalLightComponent::Serialize(FArchive& Ar)
 {
 	Ar.UsingCustomVersion(FUE5ReleaseStreamObjectVersion::GUID);

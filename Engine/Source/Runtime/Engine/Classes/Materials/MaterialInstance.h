@@ -581,6 +581,14 @@ class UMaterialInstance : public UMaterialInterface
 	uint8 bCastDynamicShadowAsMasked : 1;
 	uint8 bOutputTranslucentVelocity : 1;
 	uint8 bIsShadingModelFromMaterialExpression : 1;
+
+	/** FFCOTW Custom Engine */
+	uint32 NumOfShells;
+	float ShellSortSign;
+	uint8 bForceShadowCastingToBeDisabled: 1;
+	uint8 bUseLegacyProjectionBlend: 1;
+	uint8 bOutputTonemapMask: 1;
+	
 protected:
 	uint8 bLoadedCachedData : 1;
 public:

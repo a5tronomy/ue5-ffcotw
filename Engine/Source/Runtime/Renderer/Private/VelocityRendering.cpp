@@ -27,6 +27,17 @@
 #include "RenderCore.h"
 
 // Changing this causes a full shader recompile
+
+/** FFCOTW Custom Engine */
+/** Custom console variable for FFCOTW */
+static TAutoConsoleVariable<int32> CVarVSNKSkipVelocityPass(
+	TEXT("r.SNKSkipVelocityPass"),
+	0,
+	TEXT("Whether or not to skip the velocity pass.\n") \
+	TEXT(" 0: Do not skip velocity pass.\n") \
+	TEXT(" 1: Skip velocity pass.\n"), \
+	ECVF_ReadOnly | ECVF_RenderThreadSafe);
+
 static TAutoConsoleVariable<int32> CVarVelocityOutputPass(
 	TEXT("r.VelocityOutputPass"),
 	0,

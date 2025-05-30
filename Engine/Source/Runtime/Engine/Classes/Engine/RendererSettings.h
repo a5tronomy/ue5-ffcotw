@@ -777,6 +777,19 @@ class URendererSettings : public UDeveloperSettings
 		ToolTip="Select how the g-buffer is cleared in game mode (only affects deferred shading)."))
 	TEnumAsByte<EClearSceneOptions::Type> ClearSceneMethod;
 
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_RendererSettings01[0x3] = {};
+	
+	UPROPERTY(config, EditAnywhere, Category = Optimizations, meta = (
+		ConsoleVariable = "r.SNKSkipVelocityPass", DisplayName = "SNK Skip Velocity Pass",
+		ConfigRestartRequired = true))
+	uint8 bSNKSkipVelocityPass;
+
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_RendererSettings02[0x3] = {};
+	
 	UPROPERTY(config, EditAnywhere, Category = Optimizations, meta = (
 		ConsoleVariable = "r.VelocityOutputPass", DisplayName = "Velocity Pass",
 		ToolTip = "When to write velocity buffer. Changing this setting requires restarting the editor.",
@@ -788,6 +801,10 @@ class URendererSettings : public UDeveloperSettings
 		ConsoleVariable="r.Velocity.EnableVertexDeformation",
 		ToolTip="Enables materials with World Position Offset and/or World Displacement to output velocities during the velocity pass even when the actor has not moved. \nIf the VelocityPass is set to 'Write after base pass' this can incur a performance cost due to additional draw calls. \nThat performance cost is higher if many objects are using World Position Offset. A forest of trees for example." ))
 	TEnumAsByte<EVertexDeformationOutputsVelocity::Type> VertexDeformationOutputsVelocity;
+
+	/** FFCOTW Custom Engine */
+	/** Insert of unreflected data */
+	uint8 UnknownData_RendererSettings03[0x2] = {};
 
 	UPROPERTY(config, EditAnywhere, Category=Optimizations, meta=(
 		ConsoleVariable="r.SelectiveBasePassOutputs", DisplayName="Selectively output to the GBuffer rendertargets",
